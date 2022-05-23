@@ -10,7 +10,8 @@ export class WebSocketAPI {
     webSocketEndPoint: string = 'http://localhost:8083/ws';
     topic: string = "/topic/greetings";
     stompClient: any;
-    appComponent?: AppComponent;
+    appComponent: AppComponent;
+    connexion:any;
 
     constructor(appComponent: AppComponent){
         this.appComponent = appComponent;
@@ -22,11 +23,14 @@ export class WebSocketAPI {
         this.stompClient = Stomp.over(ws);
         const _this = this;
         _this.stompClient.connect({}, function (frame:any) {
-            _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) {
-                _this['onMessageReceived'](sdkEvent);
-            });
+     _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) { 
+        _this.connexion= _this['onMessageReceived'](sdkEvent);});
             //_this.stompClient.reconnect_delay = 2000;
-        }, this['errorCallBack']);
+        }, 
+        
+        this['errorCallBack']);
+
+       
     };
 
     _disconnect() {
@@ -51,7 +55,9 @@ export class WebSocketAPI {
     }
 
     onMessageReceived(message:any) {
-        console.log("Message envoyer au server :: " + message);
+        //console.log("Message envoyer au server :: " + message);
+                
+        this.appComponent.handleMessage(JSON.parse(message.body));
 
     }
 }
