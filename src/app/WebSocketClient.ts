@@ -22,7 +22,7 @@ export class WebSocketClient
     _this.stompClient.connect({}, function (frame:any) {
  _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) {
    _this['onMessageReceived'](sdkEvent);});
-        //_this.stompClient.reconnect_delay = 2000;
+        _this.stompClient.reconnect_delay = 2000;
     },
 
     this['errorCallBack']);

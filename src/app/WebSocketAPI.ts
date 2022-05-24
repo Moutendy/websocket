@@ -1,17 +1,18 @@
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import { AppComponent } from './app.component';
+
+import { ServerComponent } from './server/server.component';
 
 export class WebSocketAPI {
     [x: string]: any;
     webSocketEndPoint: string = 'http://localhost:8083/ws';
     topic: string = "/topic/greetings";
     stompClient: any;
-    appComponent: AppComponent;
-    connexion:any;
+    serverComponent?: ServerComponent;
+    connexion:any; 
 
-    constructor(appComponent: AppComponent){
-      this.appComponent = appComponent;
+    constructor(serverComponent: ServerComponent){
+      this.serverComponent = serverComponent;
   }
 
     _connect() {
@@ -22,7 +23,7 @@ export class WebSocketAPI {
         _this.stompClient.connect({}, function (frame:any) {
      _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) {
         _this.connexion= _this['onMessageReceived'](sdkEvent);});
-            //_this.stompClient.reconnect_delay = 2000;
+           _this.stompClient.reconnect_delay = 2000;
         },
 
         this['errorCallBack']);
@@ -48,13 +49,13 @@ export class WebSocketAPI {
 
       _send(message:any) {
         console.log("appel via socket");
-        this.stompClient.send("/app/notificationdemande", {}, JSON.stringify(message));
+        this.stompClient.send("/app/hello", {}, JSON.stringify(message));
     }
 
     onMessageReceived(message:any) {
         //console.log("Message envoyer au server :: " + message);
 
-        this.appComponent.handleMessage(JSON.parse(message.body));
+        this.serverComponent?.handleMessage(JSON.parse(message.body));
 
     }
 }

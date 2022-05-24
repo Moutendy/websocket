@@ -14,6 +14,7 @@ export class ClientComponent implements OnInit {
   greeting: any;
   messages?: string[];
   name?: string;
+  nbr?:number;
 
 
 
@@ -36,6 +37,7 @@ this.connection();
     // ajouter une liste de notification
     this.greeting = message.name;
     this.messages?.push(message.name);
+    this.nbr=this.messages?.length;
   }
 
 
