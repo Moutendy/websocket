@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerwebsocketService } from '../serverwebsocket.service';
 import { WebSocketAPI } from '../WebSocketAPI';
+import { WebSocketClient } from '../WebSocketClient';
 
 @Component({
   selector: 'app-client',
@@ -9,22 +10,36 @@ import { WebSocketAPI } from '../WebSocketAPI';
 })
 export class ClientComponent implements OnInit {
   [x: string]: any;
-  
+  webSocketClient?: WebSocketClient;
+  greeting: any;
+  messages?: string[];
+  name?: string;
 
 
- 
+
   constructor() { }
 
   ngOnInit(): void {
-this.notification();
+    this.webSocketClient = new WebSocketClient(this);
+    //tableau vide
+    this.messages = [];
+this.connection();
   }
 
-  notification()
-  {
-
-    this['serverwebSocket'].connect()
-  }
-
-    
+  connection()
+{
+  this.webSocketClient?._connect();
 
 }
+  handleMessage(message:any){
+    console.log(message.name);
+    // ajouter une liste de notification
+    this.greeting = message.name;
+    this.messages?.push(message.name);
+  }
+
+
+
+}
+
+

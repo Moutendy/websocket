@@ -40,5 +40,5 @@ this.webSocketAPI?._send(this.name);
     this.greeting = message.name;
     this.messages?.push(message.name);
   }
-   
+
 }

@@ -5,13 +5,13 @@
 
     <router-outlet></router-outlet>
     <div id="main-content" class="container">
-  
+
       <div class="row">
           <div class="col-md-12">
              <!-- {{ greeting }} -->
           </div>
       </div>
-      
+
     <div class="row">
         <div class="col-md-6">
             <form class="form-inline">
@@ -32,8 +32,12 @@
                 <button (click)="sendMessage()" class="btn btn-default" type="submit">Send</button>
             </form>
         </div>
-  
+
         <p *ngFor="let m of messages"> {{m}}</p>
     </div>
-   
+    <br/>
+    <button  class="btn btn-default" routerLink="/client">client</button>
   </div>
+
+  <router-outlet></router-outlet>
+
