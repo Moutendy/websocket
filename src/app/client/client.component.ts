@@ -15,7 +15,7 @@ export class ClientComponent implements OnInit {
   messages?: string[];
   name?: string;
   nbr?:number;
-
+  list?:any[];
 
 
   constructor() { }
@@ -25,6 +25,8 @@ export class ClientComponent implements OnInit {
     //tableau vide
     this.messages = [];
 this.connection();
+
+this.getListMsg();
   }
 
   connection()
@@ -33,13 +35,18 @@ this.connection();
 
 }
   handleMessage(message:any){
-    console.log(message.name);
-    // ajouter une liste de notification
-    this.greeting = message.name;
-    this.messages?.push(message.name);
-    this.nbr=this.messages?.length;
+    // console.log(message.name);
+    // // ajouter une liste de notification
+    // this.greeting = message.name;
+    // this.messages?.push(message.name);
+    // this.nbr=this.messages?.length;
+    this.getListMsg();
   }
 
+
+  getListMsg(){
+    this.list = [];
+  }
 
 
 }

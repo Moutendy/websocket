@@ -21,7 +21,10 @@ export class WebSocketClient
     const _this = this;
     _this.stompClient.connect({}, function (frame:any) {
  _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) {
-   _this['onMessageReceived'](sdkEvent);});
+   _this['onMessageReceived'](sdkEvent)
+  
+   
+   ;});
         _this.stompClient.reconnect_delay = 2000;
     },
 
@@ -29,8 +32,10 @@ export class WebSocketClient
 
 
 };
-
-
+_send(message:any) {
+  console.log("appel via socket");
+  this.stompClient.send("/app/hello", {}, JSON.stringify(message));
+}
 onMessageReceived(message:any) {
   //console.log("Message envoyer au server :: " + message);
 
