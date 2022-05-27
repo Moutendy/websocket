@@ -35,7 +35,7 @@ this.webSocketAPI?._send(this.name);
   }
 
   handleMessage(message:any){
-    console.log(message.name);
+    console.log(message);
     // ajouter une liste de notification
     this.greeting = message.name;
     this.messages?.push(message.name);

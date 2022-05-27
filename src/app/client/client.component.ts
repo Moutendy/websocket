@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServerwebsocketService } from '../serverwebsocket.service';
-import { WebSocketAPI } from '../WebSocketAPI';
+
 import { WebSocketClient } from '../WebSocketClient';
 
 @Component({
@@ -35,11 +34,11 @@ this.getListMsg();
 
 }
   handleMessage(message:any){
-    // console.log(message.name);
+   console.log(message);
     // // ajouter une liste de notification
     // this.greeting = message.name;
-    // this.messages?.push(message.name);
-    // this.nbr=this.messages?.length;
+    this.messages?.push(message.name);
+    this.nbr=message.length;
     this.getListMsg();
   }
 
