@@ -26,7 +26,7 @@ export class ServerComponent{
 
   connect(){
     this.webSocketAPI?._connect();
-    this.sendMessage();
+
 
   }
 

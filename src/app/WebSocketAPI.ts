@@ -14,6 +14,7 @@ export class WebSocketAPI {
 
     constructor(serverComponent: ServerComponent){
       this.serverComponent = serverComponent;
+
   }
 
     _connect() {
