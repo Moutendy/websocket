@@ -12,6 +12,8 @@ export class ServiceMessageService {
 
   urlget:string="/receptionmessage";
 
+  update:string="/vu";
+
   constructor(protected http:HttpClient) { }
 
   message(Message: any)
@@ -25,5 +27,10 @@ export class ServiceMessageService {
     return this.http.get(this.host+this.urlget);
   }
 
+  liremessage(statut:any)
+  {
+    console.log("lu service")
+    return this.http.patch(this.host +this.update,statut);
+  }
 
 }

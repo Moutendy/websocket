@@ -8,22 +8,26 @@ import { WebSocketAPI } from '../WebSocketAPI';
 })
 export class ServerComponent{
 
-  
+
   webSocketAPI?: WebSocketAPI;
   greeting: any;
   messages?: string[];
   name?: string;
+  msm?: string;
   constructor() { }
 
   ngOnInit(): void {
     this.webSocketAPI = new WebSocketAPI(this);
     //tableau vide
     this.messages = [];
+    this.connect();
 
   }
 
   connect(){
     this.webSocketAPI?._connect();
+    this.sendMessage();
+
   }
 
   disconnect(){

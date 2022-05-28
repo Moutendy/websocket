@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
+import { ServiceMessageService } from '../service-message.service';
 
 import { WebSocketClient } from '../WebSocketClient';
 
@@ -12,12 +14,13 @@ export class ClientComponent implements OnInit {
   webSocketClient?: WebSocketClient;
   greeting: any;
   messages?: string[];
+  message?:string;
   name?: string;
   nbr?:number;
   list?:any[];
 
 
-  constructor() { }
+  constructor(protected serviceMessageService:ServiceMessageService) { }
 
   ngOnInit(): void {
     this.webSocketClient = new WebSocketClient(this);
@@ -25,7 +28,7 @@ export class ClientComponent implements OnInit {
     this.messages = [];
 this.connection();
 
-this.getListMsg();
+
   }
 
   connection()
@@ -33,18 +36,27 @@ this.getListMsg();
   this.webSocketClient?._connect();
 
 }
+getListMsgs()
+{
+  console.log("bonjour");
+}
+sendMessage(){
+  this.webSocketClient?._send(this.name);
+    }
   handleMessage(message:any){
    console.log(message);
     // // ajouter une liste de notification
     // this.greeting = message.name;
     this.messages?.push(message.name);
     this.nbr=message.length;
-    this.getListMsg();
+
   }
 
 
   getListMsg(){
     this.list = [];
+    console.log("lu");
+    this.serviceMessageService.liremessage("lu").pipe(take(1)).subscribe();
   }
 
 

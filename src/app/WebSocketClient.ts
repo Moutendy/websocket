@@ -8,6 +8,7 @@ export class WebSocketClient
     webSocketEndPoint: string = 'http://localhost:8083/ws';
     topic: string = "/topic/greetings";
     stompClient: any;
+    message?:any;
     clientappComponent:ClientComponent;
     constructor(clientComponent: ClientComponent){
       this.clientappComponent = clientComponent;
@@ -21,14 +22,16 @@ export class WebSocketClient
     const _this = this;
     _this.stompClient.connect({}, function (frame:any) {
  _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) {
-   _this['onMessageReceived'](sdkEvent)
-  
-   
+  _this['_send'](sdkEvent);
+  _this['onMessageReceived'](sdkEvent);
+
+
    ;});
         _this.stompClient.reconnect_delay = 2000;
     },
 
     this['errorCallBack']);
+
 
 
 };

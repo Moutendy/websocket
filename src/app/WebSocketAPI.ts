@@ -9,7 +9,8 @@ export class WebSocketAPI {
     topic: string = "/topic/greetings";
     stompClient: any;
     serverComponent?: ServerComponent;
-    connexion:any; 
+    connexion:any;
+    message?:string;
 
     constructor(serverComponent: ServerComponent){
       this.serverComponent = serverComponent;
@@ -22,7 +23,11 @@ export class WebSocketAPI {
         const _this = this;
         _this.stompClient.connect({}, function (frame:any) {
      _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) {
-        _this.connexion= _this['onMessageReceived'](sdkEvent);});
+        _this['_send'](sdkEvent);
+       _this['onMessageReceived'](sdkEvent);
+
+    });
+
            _this.stompClient.reconnect_delay = 2000;
         },
 
