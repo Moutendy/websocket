@@ -21,13 +21,11 @@ export class ServerComponent{
     //tableau vide
     this.messages = [];
     this.connect();
-
+  
   }
 
   connect(){
-    this.webSocketAPI?._connect();
-
-
+    this.webSocketAPI?._connect()
   }
 
   disconnect(){

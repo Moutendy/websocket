@@ -24,7 +24,7 @@ export class WebSocketAPI {
         const _this = this;
         _this.stompClient.connect({}, function (frame:any) {
      _this.stompClient.subscribe(_this.topic, function (sdkEvent: any) {
-        _this['_send'](sdkEvent);
+        // _this['_send'](sdkEvent);
        _this['onMessageReceived'](sdkEvent);
 
     });

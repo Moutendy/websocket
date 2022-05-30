@@ -33,7 +33,8 @@ this.connection();
 
   connection()
 {
-  this.webSocketClient?._connect();
+  
+  this.webSocketClient?._connect()
 
 }
 getListMsgs()
@@ -44,12 +45,11 @@ sendMessage(){
   this.webSocketClient?._send(this.name);
     }
   handleMessage(message:any){
-   console.log(message);
+  //  console.log(message);
     // // ajouter une liste de notification
     // this.greeting = message.name;
     this.messages?.push(message.name);
     this.nbr=message.length;
-
   }
 
 
