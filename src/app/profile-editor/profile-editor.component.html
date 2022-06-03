@@ -1,0 +1,22 @@
+<p>profile-editor works!</p>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit(info.nom)">
+
+  <label for="street">Street: </label>
+  <input id="street" class="input" type="text" formControlName="firstName">
+
+  <label for="city">City: </label>
+  <input id="city" type="text" formControlName="lastName">
+  <label for="city">City: </label>
+  <input id="city" type="checkbox" formControlName="chec" [value]="info.nom">
+<p>Form Status: {{ profileForm.status }}</p>
+
+<div *ngFor="let com of comments">
+{{com.name}}
+{{com.lastname}}
+{{com.chec}}
+</div>
+<br/>
+
+<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
