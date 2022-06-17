@@ -17,8 +17,8 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="connect">WebSocket connection:</label>
-                    <button (click)="connect()" class="btn btn-default" type="submit">Connect</button>
-                    <button (click)="disconnect()" class="btn btn-default" type="submit">Disconnect
+                    <button class="btn btn-default" type="submit">Connect</button>
+                    <button  class="btn btn-default" type="submit">Disconnect
                     </button>
                 </div>
             </form>
@@ -27,13 +27,13 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="name">What is your name?</label>
-                    <input type="text" [(ngModel)]="name" class="form-control" name="name"> <br>
+                    <input type="text" class="form-control" name="name"> <br>
                 </div>
-                <button (click)="sendMessage()" class="btn btn-default" type="submit">Send</button>
+                <button  class="btn btn-default" type="submit">Send</button>
             </form>
         </div>
 
-        <p *ngFor="let m of messages"> {{m}}</p>
+        <p > </p>
     </div>
     <br/>
 

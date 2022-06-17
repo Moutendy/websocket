@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
-import { WebSocketAPI } from './WebSocketAPI';
-import {take} from "rxjs/operators";
+// import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
+// import { WebSocketAPI } from './WebSocketAPI';
+// import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
@@ -11,34 +11,34 @@ import {take} from "rxjs/operators";
 export class AppComponent {
   title = 'angular8-springboot-websocket';
 
-  webSocketAPI?: WebSocketAPI;
-  greeting: any;
-  messages?: string[];
-  name?: string;
+//   webSocketAPI?: WebSocketAPI;
+//   greeting: any;
+//   messages?: string[];
+//   name?: string;
 
-  ngOnInit() {
-    this.webSocketAPI = new WebSocketAPI(this);
-    //tableau vide
-    this.messages = [];
-  }
+//   ngOnInit() {
+//     this.webSocketAPI = new WebSocketAPI(this);
+//     //tableau vide
+//     this.messages = [];
+//   }
 
-  connect(){
-    this.webSocketAPI?._connect();
-  }
+//   connect(){
+//     this.webSocketAPI?._connect();
+//   }
 
-  disconnect(){
-this.webSocketAPI?._disconnect();
-  }
+//   disconnect(){
+// this.webSocketAPI?._disconnect();
+//   }
 
-  sendMessage(){
-this.webSocketAPI?._send(this.name);
-  }
+//   sendMessage(){
+// this.webSocketAPI?._send(this.name);
+//   }
 
-  handleMessage(message:any){
-    console.log(message.name);
-    // ajouter une liste de notification
-    this.greeting = message.name;
-    this.messages?.push(message.name);
-  }
+//   handleMessage(message:any){
+//     console.log(message.name);
+//     // ajouter une liste de notification
+//     this.greeting = message.name;
+//     this.messages?.push(message.name);
+//   }
 
 }
