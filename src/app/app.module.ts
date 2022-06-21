@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { ClientComponent } from './client/client.component';
 import { ServerComponent } from './server/server.component';
 import {HttpClientModule} from '@angular/common/http';
-import { ProfileEditorComponent } from './profile-editor/profile-editor.component'
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { MessageComponent } from './message/message.component'
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
     AppComponent,
     ClientComponent,
     ServerComponent,
-    ProfileEditorComponent
+    ProfileEditorComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

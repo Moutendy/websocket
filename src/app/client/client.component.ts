@@ -37,8 +37,6 @@ export class ClientComponent implements OnInit {
   connect()
   {
     const socket = new SockJS(this.WsURL);
-
-   
     this.stompClient = Stomp.over(socket);
 
     this.stompClient.debug = () => { };
@@ -68,12 +66,14 @@ export class ClientComponent implements OnInit {
 
     this.setConnected(false);
   }
+
   notificationlire()
   {
 this.notificationservice.writenotification().pipe().subscribe({
 
-})
+});
   }
+
   _send(message:any) {
             console.log("appel via socket");
             this.stompClient.send("/topic/notifUser", {}, JSON.stringify(message));

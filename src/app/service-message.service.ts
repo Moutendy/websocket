@@ -16,21 +16,5 @@ export class ServiceMessageService {
 
   constructor(protected http:HttpClient) { }
 
-  message(Message: any)
-  {
-    console.log("les message à envoyer :"+Message);
-    return this.http.post(this.host+this.urlpost,Message);
-  }
-
-  receptionmessag()
-  {
-    return this.http.get(this.host+this.urlget);
-  }
-
-  liremessage(statut:any)
-  {
-    console.log("lu service")
-    return this.http.patch(this.host +this.update,statut);
-  }
 
 }

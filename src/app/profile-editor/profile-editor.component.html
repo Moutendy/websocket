@@ -1,5 +1,3 @@
-<p>profile-editor works!</p>
-
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit(info.nom)">
 
   <label for="street">Street: </label>
@@ -17,6 +15,12 @@
 {{com.chec}}
 </div>
 <br/>
+<div *ngFor="let mes of notification">
+  {{mes.destinationUser.name}}
+{{mes.message}}
+  </div>
+
+
 
 <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 </form>
